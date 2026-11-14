@@ -2,7 +2,7 @@
 
 Repositório destinado aos códigos e exemplos práticos desenvolvidos durante as aulas da disciplina de **Programação para Internet II**, com foco no desenvolvimento Back-end utilizando Node.js e Express.
 
-## 📚 Organização das aulas
+## Organização das aulas
 
 Cada aula está organizada em uma branch específica, permitindo acessar o código correspondente ao conteúdo estudado.
 
@@ -13,14 +13,14 @@ Cada aula está organizada em uma branch específica, permitindo acessar o códi
 | `branch-aula-03` | Aula 03 |
 | `branch-aula-xx` | Aula xx |
 
-## 🛠️ 1. Pré-requisitos
+## 1. Pré-requisitos
 
 Antes de começar, instale os seguintes programas:
 
 - [Node.js] (https://nodejs.org/) — Ambiente para executar JavaScript no servidor.
 - [Git](https://git-scm.com/downloads) — Ferramenta para clonar o projeto.
 
-## 📥 2. Clonar o projeto
+## 2. Clonar o projeto
 
 Para baixar o código de uma aula específica, utilize:
 
@@ -51,7 +51,7 @@ e em seguida, abra com o VS Code:
 cdode .
 ```
 
-## 📦 4. Instalar as dependências
+## 4. Instalar as dependências
 
 Dentro da pasta do projeto, execute:
 
@@ -77,7 +77,7 @@ http://localhost:3000
 ```
 Para encerrar a execução, pressione `Ctrl + C` no terminal.
 
-## 🔄 6. Acessar outra aula
+## 6. Acessar outra aula
 
 Caso queira trabalhar com outra aula, recomenda-se cloná-la em uma pasta diferente.
 
