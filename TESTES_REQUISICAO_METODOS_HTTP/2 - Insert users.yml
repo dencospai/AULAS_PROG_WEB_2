@@ -1,0 +1,23 @@
+info:
+  name: 2 - Insert users
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost:3000/usuario
+  body:
+    type: json
+    data: |-
+      {
+        "nome": "ROse",
+        "idade": 37
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+​

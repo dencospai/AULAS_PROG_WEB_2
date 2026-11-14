@@ -1,0 +1,22 @@
+info:
+  name: 4 - Fully update user by ID
+  type: http
+  seq: 1
+
+http:
+  method: PUT
+  url: http://localhost:3000/usuario/1
+  body:
+    type: json
+    data: |-
+      {
+        "nome": "Lais",
+        "idade": 4
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
