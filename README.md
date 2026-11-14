@@ -1,6 +1,6 @@
 # Programação para Internet II
 
-Branch do código da aula 1 de **Programação para Internet II**
+Aula 1 de **Programação para Internet II**
 
 ## 1. Pré-requisitos
 
@@ -11,7 +11,7 @@ Antes de começar, instale os seguintes programas:
 
 ## 2. Clonar o projeto da aula
 
-Para baixar o código de uma aula específica, utilize:
+Para baixar o código dessa aula, utilize:
 
 ```bash
 git clone --branch branch-aula-01 --single-branch https://github.com/dencospai/AULAS_PROG_WEB_2.git
@@ -50,6 +50,13 @@ npm run start
 ```
 Para encerrar a execução, pressione `Ctrl + C` no terminal.
 
+## 6. Abrir aplicação
+
+Com o servidor iniciado, abra o navegador com a URL:
+```bash
+http://localhost:3000/
+```
+Para encerrar a execução, pressione `Ctrl + C` no terminal.
+
 **Bons estudos!**
 
-Explore os códigos, acompanhe a evolução do projeto e pratique os conceitos apresentados durante as aulas.
