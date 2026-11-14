@@ -6,7 +6,7 @@ const app = express()
 
 app.use(express.json())
 
-
+// Registrar as rotas de usuários
 app.use("/usuario", usuarioRoutes)
 
 app.get("/", (req, res) => {

@@ -1,94 +1,25 @@
 import { Router } from "express";
+import { listarUsuario, cadastrarUsuario, atualizarTodoUsuario, atualizarParteUsuario, deletarUsuario, buscarIndice } from "../controllers/usuarioControllers.js"; 
 
 const router = Router();
 
-const lista = []
 
+// GET - Listar todos os usuários
+router.get("/", listarUsuario )
 
+// POST - Cadastrar usuário
+router.post("/", cadastrarUsuario)
 
-router.get("/", (req, res) => {
-    return res.json(lista)
-})
+// PUT - Atualizar todos os dados do usuário
+router.put("/:indice", atualizarTodoUsuario)
 
+// PATCH - Atualizar parcialmente o usuário
+router.patch("/:indice", atualizarParteUsuario)
 
-router.post("/", (req, res) => {
-    const nome = req.body.nome
-    const idade = req.body.idade
+// DELETE - Excluir usuário
+router.delete("/:indice", deletarUsuario)
 
-    lista.push({ nome, idade })
-
-    return res.status(201).json({ nome, idade })
-})
-
-
-router.put("/:indice", (req, res) => {
-    const indice = Number(req.params.indice)
-
-    if (!lista[indice]) {
-        return res.status(404).json({
-            mensagem: "Usuário não encontrado!"
-        })
-    }
-
-    const nome = req.body.nome
-    const idade = req.body.idade
-
-    lista[indice] = { nome, idade }
-
-    return res.json(lista[indice])
-})
-
-
-router.patch("/:indice", (req, res) => {
-    const indice = Number(req.params.indice)
-
-    if (!lista[indice]) {
-        return res.status(404).json({
-            mensagem: "Usuário não encontrado!"
-        })
-    }
-
-    const nome = req.body.nome
-    const idade = req.body.idade
-
-    if (nome !== undefined) {
-        lista[indice].nome = nome
-    }
-
-    if (idade !== undefined) {
-        lista[indice].idade = idade
-    }
-
-    return res.json(lista[indice])
-})
-
-router.delete("/:indice", (req, res) => {
-    const indice = Number(req.params.indice)
-
-    if (!lista[indice]) {
-        return res.status(404).json({
-            mensagem: "Usuário não encontrado!"
-        })
-    }
-
-    lista.splice(indice, 1)
-
-    return res.json({
-        mensagem: "Usuário excluído com sucesso!"
-    })
-})
-
-
-router.get("/:indice", (req, res) => {
-    const indice = Number(req.params.indice)
-
-    if (!lista[indice]) {
-        return res.status(404).json({
-            mensagem: "Usuário não encontrado!"
-        })
-    }
-
-    return res.json(lista[indice])
-})
+// GET - Buscar usuário pelo índice
+router.get("/:indice", buscarIndice)
 
 export default router;
