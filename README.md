@@ -1,62 +1,68 @@
 # Programação para Internet II
 
-Aula 1 de **Programação para Internet II**
+Aula 3 de **Programação para Internet II**
 
-## 1. Pré-requisitos
+## Testando a API com Bruno (Postman, Thunder Client ou Insomnia)
 
-Antes de começar, instale os seguintes programas:
+Para testar as rotas da API desenvolvida durante as aulas, utilize uma das seguintes ferramentas:
 
-- [Node.js](https://nodejs.org/) — Ambiente para executar JavaScript no servidor.
-- [Git](https://git-scm.com/downloads) — Para clonar o projeto.
+- **[Bruno](https://www.usebruno.com/)**
+- **[Postman](https://www.postman.com/downloads/)**
+- **[Thunder Client](https://www.thunderclient.com/)**
+  **[Insomnia](https://insominia.rest/)**
 
-## 2. Clonar o projeto da aula
+### Localizar os arquivos de teste
 
-Para baixar o código dessa aula, utilize:
+Após clonar o repositório, localize a pasta contendo o arquivo `.yml`.
 
-```bash
-git clone --branch branch-aula-01 --single-branch https://github.com/dencospai/AULAS_PROG_WEB_2.git
+Exemplo:
+
+```text
+AULAS_PROG_WEB_2/
+├── server.js
+├── package.json
+├── README.md
+└── TESTES_REQUISICAO_METODOS_HTTP/
+    └── opencollection.yml
 ```
 
-## 3. Acessar a pasta do projeto
+### Iniciar o servidor
 
-No terminal, execute:
+Antes de realizar os testes, abra o terminal na pasta do projeto e execute:
 
-```bash
-cd AULAS_PROG_WEB_2
-```
-
-Para abrir no VS Code:
-
-```bash
-code .
-```
-
-Também é possível abrir a pasta manualmente pelo VS Code.
-
-## 4. Instalar as dependências
-
-Dentro da pasta do projeto, execute:
 ```bash
 npm install
-```
-Esse comando instala automaticamente as dependências declaradas no arquivo `package.json`, como o Express.
-**Observação:** a pasta `node_modules` será criada automaticamente. Não é necessário baixá-la do GitHub.
-
-## 5. Executar o servidor
-
-Para iniciar o projeto, execute:
-```bash
 npm run start
 ```
-Para encerrar a execução, pressione `Ctrl + C` no terminal.
+Mantenha o servidor em execução durante os testes.
 
-## 6. Abrir aplicação
+### Utilizando o Bruno
+Instruções para utilizar o Bruno (usado em aula):
+1. Instala a extensão Bruno no VS Code
+2. Abra o Bruno.
+3. Selecione a opção de importar uma coleção ou especificação.
+4. Escolha a opção de importação compatível com **OpenAPI**.
+5. Localize o arquivo `.yml` na pasta /TESTES_REQUISICAO_METODOS_HTTP.
+6. Confirme a importação.
+7. Configure o endereço da API [http://localhost:3000/usuario].
+8. Selecione uma requisição e clique em **Send**.
 
-Com o servidor iniciado, abra o navegador com a URL:
-```bash
-http://localhost:3000/
+Para demais clientes como Postman, Insomnia ou Thunder Clients as instruções acimas são parecidas.
+
+### Testar as requisições
+
+Com o servidor em execução, verifique o endereço configurado na ferramenta.
+```text
+http://localhost:3000/usuario
 ```
-Para encerrar a execução, pressione `Ctrl + C` no terminal.
 
-**Bons estudos!**
+As requisições podem utilizar diferentes métodos HTTP:
 
+| Método | Finalidade |
+|---|---|
+| GET | Consultar informações |
+| POST | Cadastrar informações |
+| PUT | Atualizar informações |
+| DELETE | Excluir informações |
+
+Selecione a requisição desejada, clique em **Send** e observe a resposta retornada pelo servidor.
