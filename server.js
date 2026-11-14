@@ -10,12 +10,15 @@ let proximoID = 1 //colodo esse contador para os indices serem inseridos automat
 
 // GET - Rota principal
 app.get("/", (req, res) => {
-    return res.send("Olá Mundo!")
+    // 200 (OK): requisição realizada com sucesso.
+    return res.status(200).send("Olá Mundo!")
 })
 
 // GET - Visualizar todos os usuários
 app.get("/usuario", (req, res) => {
-    return res.json(lista)
+    // 200 (OK): a consulta foi realizada com sucesso,
+    // mesmo que a lista esteja vazia.
+    return res.status(200).json(lista)
 })
 
 // POST - Cadastrar usuário
@@ -24,7 +27,8 @@ app.post("/usuario", (req, res) => {
     const idade = req.body.idade
 
     if (!nome || idade === undefined || idade === null) {
-        return res.json({
+        // 400 (Bad Request): faltam dados obrigatórios.
+        return res.status(400).json({
             mensagem: "Nome e idade são obrigatórios!"
         })
     }
@@ -37,7 +41,8 @@ app.post("/usuario", (req, res) => {
 
     lista.push(usuario)
 
-    return res.json(usuario)
+    // 201 (Created): um novo usuário foi criado.
+    return res.status(201).json(usuario)
 })
 
 // GET - Visualizar usuário por ID
@@ -47,12 +52,14 @@ app.get("/usuario/:indice", (req, res) => {
     const usuario = lista.find(usuario => usuario.id === id)
 
     if (usuario === undefined) {
-        return res.json({
+        // 404 (Not Found): o ID informado não foi encontrado.
+        return res.status(404).json({
             mensagem: "Usuário não encontrado!"
         })
     }
 
-    return res.json(usuario)
+    // 200 (OK): usuário encontrado com sucesso.
+    return res.status(200).json(usuario)
 })
 
 // PUT - Atualizar todos os dados
@@ -61,8 +68,9 @@ app.put("/usuario/:indice", (req, res) => {
 
     const indice = lista.findIndex(usuario => usuario.id === id)
 
+    // 404 (Not Found): não existe usuário com esse ID.
     if (indice === -1) {
-        return res.json({
+        return res.status(404).json({
             mensagem: "Usuário não encontrado!"
         })
     }
@@ -72,7 +80,8 @@ app.put("/usuario/:indice", (req, res) => {
 
     
     if (!nome || idade === undefined || idade === null) {
-        return res.json({
+        // 400 (Bad Request): PUT exige todos os dados obrigatórios.
+        return res.status(400).json({
             mensagem: "Nome e idade são obrigatórios!"
         })
     }
@@ -83,7 +92,8 @@ app.put("/usuario/:indice", (req, res) => {
         idade
     }
 
-    return res.json(lista[indice])
+    // 200 (OK): usuário atualizado com sucesso.
+    return res.status(200).json(lista[indice])
 })
 
 // PATCH - Atualizar apenas alguns dados
@@ -93,7 +103,8 @@ app.patch("/usuario/:indice", (req, res) => {
     const usuario = lista.find(usuario => usuario.id === id)
 
     if (usuario === undefined) {
-        return res.json({
+        // 404 (Not Found): usuário não encontrado.
+        return res.status(404).json({
             mensagem: "Usuário não encontrado!"
         })
     }
@@ -103,7 +114,8 @@ app.patch("/usuario/:indice", (req, res) => {
 
     
     if (nome === undefined && idade === undefined) {
-        return res.json({
+        // 400 (Bad Request): nenhum campo foi informado.
+        return res.status(400).json({
             mensagem: "Informe pelo menos um campo para atualizar!"
         })
     }
@@ -117,7 +129,7 @@ app.patch("/usuario/:indice", (req, res) => {
     }
 
     // 200 (OK): atualização parcial realizada com sucesso.
-    return res.json(usuario)
+    return res.status(200).json(usuario)
 })
 
 // DELETE - Excluir usuário
@@ -127,14 +139,16 @@ app.delete("/usuario/:indice", (req, res) => {
     const indice = lista.findIndex(usuario => usuario.id === id)
 
     if (indice === -1) {
-        return res.json({
+        // 404 (Not Found): usuário não existe.
+        return res.status(404).json({
             mensagem: "Usuário não encontrado!"
         })
     }
 
     lista.splice(indice, 1)
 
-    return res.json({
+    // 200 (OK): exclusão realizada e mensagem retornada.
+    return res.status(200).json({
         mensagem: "Usuário removido com sucesso!"
     })
 })
