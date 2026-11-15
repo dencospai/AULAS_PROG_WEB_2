@@ -414,18 +414,6 @@ Para finalizar, é importante compreender a diferença entre esses dois conceito
 
 Essa separação é uma prática importante na organização de aplicações back-end, pois permite que cada parte do código tenha uma responsabilidade bem definida.
 
-## 10. Atividade prática
-
-Utilizando como base o projeto desenvolvido na Aula 05, os alunos deverão criar a pasta `controllers`, implementar o arquivo `usuarioControllers.js` e transferir para ele as funções responsáveis pelas operações de gerenciamento dos usuários.
-
-Em seguida, deverão modificar o arquivo `usuarioRoutes.js`, substituindo as funções escritas diretamente nas rotas pelas referências às funções importadas dos Controllers.
-
-Após realizar as alterações, deverão iniciar o servidor e testar as operações GET, POST, PUT, PATCH e DELETE utilizando Bruno, Postman ou Thunder Client.
-
-O objetivo é verificar se a API continua funcionando corretamente após a reorganização do código.
-
-## Resultado esperado
-
 Ao final desta aula, os alunos deverão compreender a diferença entre **Router e Controller**, aprender a exportar e importar funções entre arquivos JavaScript e reconhecer a importância de separar responsabilidades no desenvolvimento de APIs REST.
 
 Com essa organização, nossa aplicação estará mais preparada para receber novas funcionalidades e avançar para estruturas mais completas de desenvolvimento back-end.
