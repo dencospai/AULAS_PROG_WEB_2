@@ -30,30 +30,49 @@ O Express possui um recurso chamado { Router } , que permite separar um conjunto
 import { Router } from "express";
 ```
 Podemos imaginar o  { Router } como um organizador de rotas. Em vez de colocar todas as rotas no `server.js`, criamos um arquivo específico para elas.
-O interessante é que não precisamos mudar a lógica de funcionamento das nossas rotas. Vamos apenas mudar o lugar onde elas estão escritas, saindo de `server.js` para `usuarioRoutes.js`, arquivo dedicado as elas.
-Seguindo, com a linha
+O interessante é que não precisamos mudar a lógica de funcionamento das nossas rotas. Vamos apenas mudar o lugar onde elas estão escritas, saindo de `server.js` para `usuarioRoutes.js`, arquivo dedicado a elas.
+Logo após, criamos uma constante que podemos chamar de `router` no qual instancia o recurso { Router } do Express.
 ```javascript
 const router = Router();
-é uma constante chamada router no qual instancia o recurso  { Router }  do express.
-Agora, é só transferir as rotas que estão no server.js para o arquivo usuarioRoutes.js.
- 5 <Troque app. por router. em todas as rotas>
-No final, colocar
+```
+A constante router será utilizada no lugar de app na definição de todas as rotas transferidas para o arquivo usuarioRoutes.js. Por exemplo:
+
+// Antes
+app.get()
+
+// Depois
+router.get()
+
+Essa alteração permite que as rotas sejam gerenciadas pelo Router do Express, mantendo-as separadas da configuração principal do servidor.
+
+Por fim, devemos adicionar a seguinte linha ao final do arquivo usuarioRoutes.js:
 ```javascript
 export default router;
-pois essa linha é fundamental, pra disponibilizar esse Router para que outro arquivo possa utilizá-lo.
-É exatamente isso que o export default faz: permite que o Router seja importado por outro módulo.
-Imaginem que o usuarioRoutes.js é um setor responsável pelos usuários. O export é a maneira de disponibilizar esse setor para o restante da aplicação.
-Se não exportarmos o Router, não conseguiremos importá-lo normalmente no server.js.
-7 import usuarioRoutes from "./routes/usuarioRoutes.js"
-Na primeira parte, estamos importando o arquivo que contém nossas rotas.
-8 app.use("/usuario", usuarioRoutes)
-Nesse caso, estamos informando ao Express que todas server.js que as requisições para a rota /usario devem ser encaminhadas ao usuarioRoutesr que importamos, pois lá é que estão nosso de rotas
+```
+Essa linha é fundamental, pois permite exportar o Router para que ele possa ser importado e utilizado em outros arquivos da aplicação, como o server.js.
+Para compreender melhor, imagine que o arquivo usuarioRoutes.js representa um setor responsável por gerenciar todas as rotas relacionadas aos usuários. O export default funciona como uma maneira de disponibilizar esse setor para o restante da aplicação.
+Dessa forma, o arquivo server.js poderá importar o Router definido em usuarioRoutes.js e utilizá-lo para registrar as rotas responsáveis pelo gerenciamento dos usuários, mantendo o código mais organizado e separado por responsabilidades.
+Sem o `export default router;`, não será possível importar esse Router no server.js da maneira que estamos utilizando em nosso projeto.
+
+
+Agora, no arquivo server.js, devemos adicionar a seguinte linha logo abaixo da importação do Express, no início do código:
+```javascript
+import express from "express"
+import usuarioRoutes from "./routes/usuarioRoutes.js"
+```
+A segunda linha é responsável por importar o Router que foi exportado pelo arquivo usuarioRoutes.js, localizado dentro da pasta routes.
+Dessa forma, o arquivo server.js terá acesso às rotas de usuários, permitindo que elas sejam registradas e utilizadas pela aplicação.
+
+Agora, no arquivo server.js, devemos adicionar a seguinte linha, logo após app.use(express.json()):
+```javascript
+app.use("/usuario", usuarioRoutes)
+```
+Essa linha informa ao Express que todas as requisições iniciadas com `/usuario` devem ser encaminhadas ao Router importado do arquivo usuarioRoutes.js, pois é nele que estão definidas as rotas responsáveis pelo gerenciamento dos usuários.
+Dessa forma, quando uma requisição for realizada para /usuario, o Express encaminhará seu processamento ao arquivo de rotas, que identificará o método HTTP utilizado (GET, POST, PUT, PATCH ou DELETE) e executará a operação correspondente.
+
+Por exemplo: ao realizar uma requisição GET /usuario, o Express utilizará a rota router.get("/") definida no arquivo usuarioRoutes.js, retornando a lista de usuários cadastrados.
 
 Observem que o server.js não precisa conhecer todos os detalhes de cada rota. Ele apenas registra o Router responsável por determinado conjunto de funcionalidades.
 Isso torna nossa aplicação mais organizada e facilita o desenvolvimento de novos recursos.
 E sabem a diferença do app.get() e router.get()? app.get() registra a rota diretamente na aplicação; router.get() registra a rota em um Router que precisa ser montado na aplicação.
 
-
-## ✅ Resultado esperado
-
-Ao final da aula, os alunos deverão compreender como separar as rotas do arquivo principal de uma API REST, reconhecendo a importância da **modularização, organização e manutenção do código** no desenvolvimento de aplicações back-end com Node.js e Express.js.
