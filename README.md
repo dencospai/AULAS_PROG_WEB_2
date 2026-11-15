@@ -67,7 +67,7 @@ import usuarioRoutes from "./routes/usuarioRoutes.js"
 ```
 A segunda linha é responsável por importar a rota exportada do arquivo usuarioRoutes.js. Dessa forma, o arquivo server.js terá acesso as rotas de usuários, permitindo que elas sejam registradas e utilizadas pela aplicação.
 
-Agora, vamos entender por que alteramos a rota `/usuario` para `/` no arquivo usuarioRoutes.js. Essa mudança acontece porque, no arquivo principal server.js, adicionamos a seguinte linha, logo após app.use(express.json()):
+Agora, vamos entender por que alteramos a rota `/usuario` para `/` no arquivo usuarioRoutes.js. Essa mudança acontece porque, no arquivo principal server.js, adicionamos a seguinte linha, logo após `app.use(express.json())`:
 ```javascript
 app.use("/usuario", usuarioRoutes)
 ```
