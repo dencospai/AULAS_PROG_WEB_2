@@ -6,7 +6,7 @@ const app = express()
 app.use(express.json()) //aplicação entender requisições e enviar respostas em json
 
 const lista = [] //array
-let proximoID = 1 //colodo esse contador para os indices serem inseridos automaticamente
+let proximoID = 1 // Contador para gerar IDs automaticamente
 
 // GET - Rota principal
 app.get("/", (req, res) => {
