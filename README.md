@@ -28,7 +28,7 @@ O Express possui um recurso chamado `{ Router }` que permite separar um conjunto
 import { Router } from "express";
 ```
 Podemos imaginar o { Router } como um organizador de rotas dentro da aplicação. Em vez de concentrar todas as rotas no `server.js`, utilizamos `{ Router }` para agrupá-las em um arquivo específico para elas.
-O interessante é que não precisamos mudar a lógica de funcionamento das nossas rotas. Vamos apenas mudar o lugar onde elas estão escritas, onde antes estavam no `server.js` para `usuarioRoutes.js`. Então a linha.
+O interessante é que não precisamos mudar a lógica de funcionamento das nossas rotas. Vamos apenas mudar o lugar onde elas estão escritas, onde antes estavam no `server.js` para `usuarioRoutes.js`.
 Após importar `{ Render}` do Express com a linha `import { Router } from "express"` no usuarioRouter.js, agora criamos uma constante que podemos chamar de `router` no qual instancia o recurso { Router } do Express.
 ```javascript
 const router = Router();
@@ -43,7 +43,8 @@ app.get("/usuario", (req, res) => {
 ```
 
 // Depois (usuarioRoutes.js)
-`render.get("/", (req, res) => {
+```javascript
+render.get("/", (req, res) => {
     return res.json(lista)
 })
 ```
@@ -85,10 +86,10 @@ router.get("/", (req, res) => {
     return res.json(lista)
 })
 ```
-Mas por que apenas /?
+Mas por que apenas `/`?
 
 Porque o Express combina automaticamente o caminho `/usuario`, definido no server.js, com o caminho `/`, definido no usuarioRoutes.js.
-Assim, quando realizamos uma requisição `GET /usuario`, o Express encontra a rota router.get("/") e retorna a lista de usuários cadastrados.
+Assim, quando realizamos uma requisição `GET /usuario`, o Express encontra a rota `router.get("/")` e retorna a lista de usuários cadastrados.
 Resumindo: a rota `/usuario` continua existindo e funcionando normalmente. A diferença é que agora o server.js define o caminho principal, enquanto o arquivo usuarioRoutes.js contém as operações que serão executadas em cada rota. Essa separação evita a repetição de caminhos e deixa o código mais organizado e fácil de manter.
 
 **ATENÇÂO:**
