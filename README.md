@@ -28,6 +28,7 @@ projeto/
 O Express possui um recurso chamado { Router } , que permite separar um conjunto de rotas da aplicação principal.
 ```javascript
 import { Router } from "express";
+```
 Podemos imaginar o  { Router } como um organizador de rotas. Em vez de colocar todas as rotas no `server.js`, criamos um arquivo específico para elas.
 O interessante é que não precisamos mudar a lógica de funcionamento das nossas rotas. Vamos apenas mudar o lugar onde elas estão escritas, saindo de `server.js` para `usuarioRoutes.js`, arquivo dedicado as elas.
 Seguindo, com a linha
