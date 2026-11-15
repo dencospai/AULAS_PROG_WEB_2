@@ -1,6 +1,6 @@
 # Programação para Internet II
 
-Aula 02 de **Programação para Internet II**
+Aula 02: **Rota principal com GET**
 
 ## 1. Pré-requisitos
 
