@@ -1,6 +1,6 @@
 # Programação para Internet II
 
-Aula 3 de **Programação para Internet II**
+Aula 3: **Implementação de uma API REST, permitindo cadastrar, listar, consultar, atualizar e excluir usuários por meio dos métodos HTTP (GET, POST, PUT, PATCH e DELETE), armazenando os dados temporariamente em um array**
 
 ## Testando a API com Bruno (Postman, Thunder Client ou Insomnia)
 
